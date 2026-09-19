@@ -1,439 +1,659 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AI & Robotics World</title>
+<title>RoboNexus | AI & Robotics</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #070b18;
-            color: white;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #050816;
+    color: white;
+    transition: 0.4s;
+}
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(7, 11, 24, 0.95);
-            z-index: 1000;
-            border-bottom: 1px solid #1e293b;
-        }
+/* NAVIGATION */
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5,8,22,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1e293b;
+    z-index: 1000;
+}
 
-        .logo span {
-            color: #38bdf8;
-        }
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
+.logo span {
+    color: #38bdf8;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-        }
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
 
-        nav a:hover {
-            color: #38bdf8;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+}
 
-        /* Home */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px 50px;
-            background:
-                radial-gradient(circle at 50% 30%, #172554, #070b18 60%);
-        }
+nav a:hover {
+    color: #38bdf8;
+}
 
-        .hero-content {
-            max-width: 850px;
-        }
+/* THEME BUTTON */
 
-        .robot {
-            font-size: 90px;
-            margin-bottom: 20px;
-        }
+.theme {
+    border: none;
+    background: #1e293b;
+    color: white;
+    padding: 9px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+}
 
-        .hero h1 {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
+/* HERO */
 
-        .hero h1 span {
-            color: #38bdf8;
-        }
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 60px;
+    position: relative;
+    overflow: hidden;
+}
 
-        .hero p {
-            font-size: 20px;
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+}
 
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 28px;
-            background: #38bdf8;
-            color: #06101f;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-        }
+.hero::before {
+    width: 300px;
+    height: 300px;
+    background: #2563eb;
+    top: 10%;
+    left: 10%;
+    animation: float 6s infinite alternate;
+}
 
-        /* Sections */
-        section {
-            padding: 90px 8%;
-        }
+.hero::after {
+    width: 250px;
+    height: 250px;
+    background: #9333ea;
+    bottom: 10%;
+    right: 10%;
+    animation: float 5s infinite alternate;
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 50px;
-        }
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-35px);
+    }
+}
 
-        .section-title span {
-            color: #38bdf8;
-        }
+.hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+}
 
-        /* Project Cards */
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
+.robot {
+    font-size: 100px;
+    animation: robotFloat 3s infinite ease-in-out;
+}
 
-        .card {
-            background: #111827;
-            padding: 30px;
-            border-radius: 18px;
-            border: 1px solid #1e293b;
-            transition: 0.3s;
-        }
+@keyframes robotFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: #38bdf8;
-        }
+.hero h1 {
+    font-size: 65px;
+    margin: 20px 0;
+}
 
-        .card-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-        }
+.hero h1 span {
+    color: #38bdf8;
+}
 
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-        }
+.hero p {
+    color: #cbd5e1;
+    font-size: 20px;
+    line-height: 1.7;
+}
 
-        .card p {
-            color: #94a3b8;
-            line-height: 1.6;
-        }
+.button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: #38bdf8;
+    color: #03111d;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .card button {
-            margin-top: 20px;
-            padding: 10px 18px;
-            border: none;
-            border-radius: 20px;
-            background: #1e40af;
-            color: white;
-            cursor: pointer;
-        }
+.button:hover {
+    transform: scale(1.08);
+}
 
-        .card button:hover {
-            background: #2563eb;
-        }
+/* SECTIONS */
 
-        /* Skills */
-        .skills {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+section {
+    padding: 100px 8%;
+}
 
-        .skill {
-            padding: 20px 30px;
-            background: #111827;
-            border: 1px solid #1e293b;
-            border-radius: 15px;
-            font-size: 18px;
-        }
+.title {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 55px;
+}
 
-        /* About */
-        .about {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-            color: #cbd5e1;
-            line-height: 1.8;
-            font-size: 18px;
-        }
+.title span {
+    color: #38bdf8;
+}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #030712;
-            color: #64748b;
-            border-top: 1px solid #1e293b;
-        }
+/* PROJECTS */
 
-        /* Mobile */
-        @media (max-width: 600px) {
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 25px;
+}
 
-            nav {
-                padding: 15px 5%;
-            }
+.card {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
 
-            nav ul {
-                gap: 10px;
-            }
+.card:hover {
+    transform: translateY(-12px);
+    border-color: #38bdf8;
+    box-shadow: 0 15px 40px rgba(56,189,248,0.15);
+}
 
-            nav a {
-                font-size: 12px;
-            }
+.card-icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
 
-            .hero h1 {
-                font-size: 40px;
-            }
+.card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
 
-            .hero p {
-                font-size: 17px;
-            }
+.card p {
+    color: #94a3b8;
+    line-height: 1.7;
+}
 
-            .robot {
-                font-size: 70px;
-            }
-        }
-    </style>
+.status {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #172554;
+    color: #60a5fa;
+    font-size: 13px;
+}
+
+.card button {
+    display: block;
+    margin-top: 18px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #3b82f6;
+}
+
+/* SKILLS */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.skill {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    padding: 20px 28px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.skill:hover {
+    transform: scale(1.05);
+    border-color: #38bdf8;
+}
+
+/* ABOUT */
+
+.about {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #020617;
+    color: #64748b;
+}
+
+/* LIGHT MODE */
+
+.light {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.light nav {
+    background: rgba(241,245,249,0.95);
+}
+
+.light nav a {
+    color: #0f172a;
+}
+
+.light .card,
+.light .skill {
+    background: white;
+    border-color: #cbd5e1;
+}
+
+.light .card p,
+.light .about,
+.light .hero p {
+    color: #475569;
+}
+
+.light footer {
+    background: #e2e8f0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    nav {
+        padding: 15px 4%;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .robot {
+        font-size: 75px;
+    }
+
+    section {
+        padding: 70px 5%;
+    }
+
+    .title {
+        font-size: 34px;
+    }
+}
+</style>
+
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav>
+<!-- NAVIGATION -->
 
-        <div class="logo">
-            AI<span>ROBOTS</span>
-        </div>
+<nav>
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
+<div class="logo">
+Robo<span>Nexus</span>
+</div>
 
-    </nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 
+<button class="theme" onclick="toggleTheme()">🌙</button>
 
-    <!-- Home -->
-    <section class="hero" id="home">
+</nav>
 
-        <div class="hero-content">
+<!-- HERO -->
 
-            <div class="robot">🤖</div>
+<section class="hero" id="home">
 
-            <h1>
-                Welcome to my
-                <span>AI & Robotics</span>
-                World
-            </h1>
+<div class="hero-content">
 
-            <p>
-                Exploring Artificial Intelligence, Robotics,
-                Cloud Computing and the future of smart technology.
-            </p>
+<div class="robot">🤖</div>
 
-            <a href="#projects" class="button">
-                Explore My Projects 🚀
-            </a>
+<h1>
+Building the
+<span>Future</span>
+</h1>
 
-        </div>
+<p>
+Welcome to RoboNexus — a technology world
+exploring Artificial Intelligence, Robotics,
+Cloud Computing and Web Development.
+</p>
 
-    </section>
+<a class="button" href="#projects">
+Explore Projects 🚀
+</a>
 
+</div>
 
-    <!-- Projects -->
-    <section id="projects">
+</section>
 
-        <h2 class="section-title">
-            My <span>Projects</span>
-        </h2>
+<!-- PROJECTS -->
 
-        <div class="projects">
+<section id="projects">
 
-            <div class="card">
+<h2 class="title">
+My <span>Projects</span>
+</h2>
 
-                <div class="card-icon">🤖</div>
+<div class="projects">
 
-                <h3>TN Smart Robot</h3>
+<div class="card">
 
-                <p>
-                    A smart robot concept designed to detect
-                    waste, road problems, obstacles and
-                    streetlight problems.
-                </p>
+<div class="card-icon">🤖</div>
 
-                <button onclick="showProject('TN Smart Robot')">
-                    View Project
-                </button>
+<h3>TN Smart Robot</h3>
 
-            </div>
+<p>
+A smart robot concept designed to detect
+waste, road problems, obstacles and
+streetlight problems.
+</p>
 
+<div class="status">
+Building
+</div>
 
-            <div class="card">
+<button onclick="showProject('TN Smart Robot')">
+View Project
+</button>
 
-                <div class="card-icon">🧹</div>
+</div>
 
-                <h3>Cleaning Robot</h3>
+<div class="card">
 
-                <p>
-                    A home-helper robot designed to assist
-                    with cleaning tasks and detect objects
-                    around the room.
-                </p>
+<div class="card-icon">🧹</div>
 
-                <button onclick="showProject('Cleaning Robot')">
-                    View Project
-                </button>
+<h3>Cleaning Robot</h3>
 
-            </div>
+<p>
+A home-helper robot designed to assist
+with cleaning tasks and detect objects
+around a room.
+</p>
 
+<div class="status">
+Planning
+</div>
 
-            <div class="card">
+<button onclick="showProject('Cleaning Robot')">
+View Project
+</button>
 
-                <div class="card-icon">🗑️</div>
+</div>
 
-                <h3>Smart Dustbin</h3>
+<div class="card">
 
-                <p>
-                    A smart waste-management idea that can
-                    detect waste and make everyday cleaning
-                    easier.
-                </p>
+<div class="card-icon">🗑️</div>
 
-                <button onclick="showProject('Smart Dustbin')">
-                    View Project
-                </button>
+<h3>Smart Dustbin</h3>
 
-            </div>
+<p>
+A smart waste-management project designed
+to make everyday waste collection easier.
+</p>
 
+<div class="status">
+Planning
+</div>
 
-            <div class="card">
+<button onclick="showProject('Smart Dustbin')">
+View Project
+</button>
 
-                <div class="card-icon">☁️</div>
+</div>
 
-                <h3>Cloud Projects</h3>
+<div class="card">
 
-                <p>
-                    Learning how servers, cloud computing,
-                    applications and online services work.
-                </p>
+<div class="card-icon">☁️</div>
 
-                <button onclick="showProject('Cloud Projects')">
-                    View Project
-                </button>
+<h3>Cloud Projects</h3>
 
-            </div>
+<p>
+Learning about servers, cloud computing,
+web applications and online services.
+</p>
 
-        </div>
+<div class="status">
+Learning
+</div>
 
-    </section>
+<button onclick="showProject('Cloud Projects')">
+View Project
+</button>
 
+</div>
 
-    <!-- Skills -->
-    <section id="skills">
+</div>
 
-        <h2 class="section-title">
-            What I'm <span>Learning</span>
-        </h2>
+</section>
 
-        <div class="skills">
+<!-- SKILLS -->
 
-            <div class="skill">🤖 Robotics</div>
-            <div class="skill">🧠 Artificial Intelligence</div>
-            <div class="skill">☁️ Cloud Computing</div>
-            <div class="skill">💻 Programming</div>
-            <div class="skill">🌐 Web Development</div>
+<section id="skills">
 
-        </div>
+<h2 class="title">
+My <span>Skills</span>
+</h2>
 
-    </section>
+<div class="skills">
 
+<div class="skill">🤖 Robotics</div>
 
-    <!-- About -->
-    <section id="about">
+<div class="skill">🧠 Artificial Intelligence</div>
 
-        <h2 class="section-title">
-            About <span>Me</span>
-        </h2>
+<div class="skill">☁️ Cloud Computing</div>
 
-        <div class="about">
+<div class="skill">💻 Programming</div>
 
-            <p>
-                I am learning technology and building projects
-                using electronics, programming and robotics.
-                My main interests are Artificial Intelligence,
-                Robotics and Cloud Computing.
-            </p>
+<div class="skill">🌐 Web Development</div>
 
-        </div>
+<div class="skill">⚡ Arduino</div>
 
-    </section>
+</div>
 
+</section>
 
-    <!-- Footer -->
-    <footer>
+<!-- ABOUT -->
 
-        <p>© 2026 AI & Robotics World</p>
+<section id="about">
 
-        <p>
-            Built with HTML, CSS & JavaScript 🤖
-        </p>
+<h2 class="title">
+About <span>RoboNexus</span>
+</h2>
 
-    </footer>
+<div class="about">
 
+<p>
+RoboNexus is a personal technology project
+focused on learning and building with
+Artificial Intelligence, Robotics,
+Cloud Computing and programming.
+</p>
 
-    <!-- JavaScript -->
-    <script>
+</div>
 
-        function showProject(projectName) {
+</section>
 
-            alert(
-                "🚀 " + projectName +
-                "\n\nMore information about this project will be added soon!"
-            );
+<!-- CONTACT -->
 
-        }
+<section id="contact">
 
-    </script>
+<h2 class="title">
+Get in <span>Touch</span>
+</h2>
+
+<div class="contact">
+
+<p>
+Interested in technology and robotics?
+More projects will be added here in the future.
+</p>
+
+<a class="button" href="#home">
+Back to Home ↑
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 RoboNexus
+</p>
+
+<p>
+AI • Robotics • Cloud • Technology
+</p>
+
+</footer>
+
+<script>
+
+/* PROJECT BUTTON */
+
+function showProject(projectName) {
+
+    alert(
+        "🚀 " + projectName +
+        "\n\nProject details will be added soon!"
+    );
+
+}
+
+
+/* DARK / LIGHT MODE */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("light");
+
+    const button = document.querySelector(".theme");
+
+    if (document.body.classList.contains("light")) {
+
+        button.textContent = "☀️";
+
+    } else {
+
+        button.textContent = "🌙";
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
+```
+
+### Now do this on GitHub
+
+**`index.html` → ✏️ Edit → select all old code → paste this code → Commit changes.**
+
+Then open your website again.
+
+You should see the new **RoboNexus** design with the animated 🤖, project cards, skills, navigation, and 🌙 theme button.
