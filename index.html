@@ -9,9 +9,9 @@
 <style>
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
@@ -20,8 +20,6 @@ body {
     color: white;
     line-height: 1.6;
 }
-
-/* NAVIGATION */
 
 nav {
     background: #111831;
@@ -42,40 +40,21 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 18px;
 }
 
 nav a:hover {
     color: #00e5ff;
 }
 
-/* HERO */
-
 .hero {
     text-align: center;
-    padding: 100px 20px;
+    padding: 90px 20px;
     background: linear-gradient(135deg, #111831, #07101d);
 }
 
 .robot {
     font-size: 80px;
-    animation: float 3s infinite ease-in-out;
-}
-
-@keyframes float {
-
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-
 }
 
 .hero h1 {
@@ -99,12 +78,9 @@ nav a:hover {
     border: none;
     border-radius: 25px;
     background: #00e5ff;
-    color: #061018;
-    font-weight: bold;
     cursor: pointer;
+    font-weight: bold;
 }
-
-/* SECTIONS */
 
 section {
     padding: 70px 8%;
@@ -115,8 +91,6 @@ section h2 {
     font-size: 35px;
     margin-bottom: 40px;
 }
-
-/* PROJECTS */
 
 .projects {
     display: grid;
@@ -129,57 +103,45 @@ section h2 {
     padding: 25px;
     border-radius: 18px;
     border: 1px solid #283457;
-    transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
     border-color: #00e5ff;
+    transform: translateY(-5px);
+    transition: 0.3s;
 }
 
 .card-icon {
     font-size: 55px;
-    margin-bottom: 15px;
 }
 
 .card h3 {
     color: #00e5ff;
     font-size: 24px;
-    margin-bottom: 12px;
-}
-
-.card h4 {
-    margin-top: 18px;
-    color: #9eeeff;
+    margin: 10px 0;
 }
 
 .card p {
     color: #c8d1e8;
 }
 
-.card ul {
-    margin-left: 20px;
-    color: #c8d1e8;
-}
-
-.status {
-    display: inline-block;
-    margin-top: 18px;
-    padding: 5px 12px;
-    background: #26365c;
-    border-radius: 15px;
-    font-size: 13px;
-}
-
 .card button {
-    display: block;
     margin-top: 20px;
-    padding: 10px 18px;
+    padding: 11px 20px;
     border: none;
     border-radius: 20px;
     background: #00e5ff;
     cursor: pointer;
     font-weight: bold;
+}
+
+.status {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 12px;
+    background: #26365c;
+    border-radius: 15px;
+    font-size: 13px;
 }
 
 /* SKILLS */
@@ -195,7 +157,6 @@ section h2 {
     padding: 20px;
     text-align: center;
     border-radius: 12px;
-    border: 1px solid #283457;
 }
 
 /* ABOUT */
@@ -216,10 +177,79 @@ section h2 {
 
 .contact p {
     color: #c8d1e8;
-    margin: 8px;
 }
 
-/* FOOTER */
+/* POPUP */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: #111831;
+    width: 90%;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #00e5ff;
+}
+
+.close {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+    color: #00e5ff;
+}
+
+.modal h2 {
+    color: #00e5ff;
+    margin-bottom: 20px;
+}
+
+.modal h3 {
+    color: #9eeeff;
+    margin-top: 25px;
+}
+
+.modal p,
+.modal li {
+    color: #d3dbed;
+}
+
+.modal ul {
+    margin-left: 25px;
+}
+
+.code {
+    background: #050812;
+    padding: 18px;
+    margin-top: 12px;
+    border-radius: 10px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    color: #bcefff;
+}
+
+.diagram {
+    background: #0b1020;
+    border: 1px solid #33446e;
+    padding: 25px;
+    margin-top: 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-family: monospace;
+    white-space: pre-wrap;
+    color: #ffffff;
+}
 
 footer {
     text-align: center;
@@ -227,8 +257,6 @@ footer {
     background: #070b16;
     color: #8c98b5;
 }
-
-/* MOBILE */
 
 @media(max-width: 600px) {
 
@@ -245,6 +273,10 @@ footer {
         font-size: 38px;
     }
 
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
 }
 
 </style>
@@ -307,32 +339,15 @@ Explore Projects 🚀
 <h3>TN Smart Car</h3>
 
 <p>
-A smart robotic car concept designed to identify
-different problems and provide useful actions.
+A smart robotic car designed to identify waste,
+road problems, obstacles and streetlight problems.
 </p>
 
-<h4>Features</h4>
+<div class="status">Building 🚧</div>
 
-<ul>
-<li>Waste detection</li>
-<li>Road problem detection</li>
-<li>Obstacle detection</li>
-<li>Streetlight checking</li>
-<li>Bluetooth manual control</li>
-</ul>
+<br>
 
-<h4>Components</h4>
-
-<p>
-Arduino UNO, HC-05 Bluetooth, ultrasonic sensor,
-IR sensors, LDR and motor driver.
-</p>
-
-<div class="status">
-Building 🚧
-</div>
-
-<button onclick="showProject('TN Smart Car')">
+<button onclick="openProject('tn')">
 View Project
 </button>
 
@@ -352,27 +367,11 @@ An automatic dustbin concept designed to make
 waste disposal easier and more hygienic.
 </p>
 
-<h4>Features</h4>
+<div class="status">Planning 📋</div>
 
-<ul>
-<li>Automatic lid opening</li>
-<li>Waste detection</li>
-<li>Hands-free operation</li>
-<li>Smart waste management</li>
-</ul>
+<br>
 
-<h4>Components</h4>
-
-<p>
-Arduino, ultrasonic sensor, servo motor
-and other electronic components.
-</p>
-
-<div class="status">
-Planning 📋
-</div>
-
-<button onclick="showProject('Smart Dustbin')">
+<button onclick="openProject('dustbin')">
 View Project
 </button>
 
@@ -388,38 +387,19 @@ View Project
 <h3>Cleaning Robot</h3>
 
 <p>
-A home helper robot concept designed to help
-with cleaning tasks and assist at home.
+A home helper robot designed to assist with
+cleaning, waste collection and obstacle detection.
 </p>
 
-<h4>Features</h4>
+<div class="status">Planning 📋</div>
 
-<ul>
-<li>Floor cleaning</li>
-<li>Waste collection</li>
-<li>Obstacle detection</li>
-<li>Water spraying</li>
-<li>Manual control</li>
-</ul>
+<br>
 
-<h4>Components</h4>
-
-<p>
-Arduino, L293D motor driver, HC-05 Bluetooth,
-ultrasonic sensor, IR sensors, servo motor,
-water pump and relay.
-</p>
-
-<div class="status">
-Planning 📋
-</div>
-
-<button onclick="showProject('Cleaning Robot')">
+<button onclick="openProject('cleaning')">
 View Project
 </button>
 
 </div>
-
 
 </div>
 
@@ -435,15 +415,10 @@ View Project
 <div class="skills">
 
 <div class="skill">🤖 Robotics</div>
-
 <div class="skill">🧠 Artificial Intelligence</div>
-
 <div class="skill">☁️ Cloud Computing</div>
-
 <div class="skill">💻 Programming</div>
-
 <div class="skill">🌐 Web Development</div>
-
 <div class="skill">🔧 Arduino</div>
 
 </div>
@@ -461,9 +436,11 @@ View Project
 
 <p>
 RoboNexus is my personal technology project website.
-I am learning about Artificial Intelligence, Robotics,
+I am learning Artificial Intelligence, Robotics,
 Cloud Computing, Arduino and Web Development.
 </p>
+
+<br>
 
 <p>
 My goal is to build useful technology that can solve
@@ -481,11 +458,325 @@ real-world problems and make everyday life easier.
 
 <h2>📩 Contact</h2>
 
-<p>Interested in my projects?</p>
-
 <p>More projects will be added soon 🚀</p>
 
 </section>
+
+
+<!-- ================= TN SMART CAR POPUP ================= -->
+
+<div id="tn" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeProject('tn')">&times;</span>
+
+<h2>🚗 TN Smart Car</h2>
+
+<h3>📌 About the Project</h3>
+
+<p>
+TN Smart Car is a robotics project designed to detect
+different problems such as waste, road problems,
+obstacles and streetlight problems.
+The current design uses Bluetooth for manual control.
+</p>
+
+<h3>⭐ Advantages</h3>
+
+<ul>
+<li>Helps identify waste</li>
+<li>Can identify road problems</li>
+<li>Can detect obstacles</li>
+<li>Can check streetlight conditions</li>
+<li>Can be manually controlled using Bluetooth</li>
+<li>Can be developed further with AI and cloud technology</li>
+</ul>
+
+<h3>🔧 Components</h3>
+
+<ul>
+<li>Arduino UNO</li>
+<li>HC-05 Bluetooth module</li>
+<li>Ultrasonic sensor</li>
+<li>2 IR sensors</li>
+<li>LDR</li>
+<li>LED</li>
+<li>AFMotor / motor driver</li>
+<li>4 DC motors</li>
+<li>NEO-6M GPS (optional)</li>
+</ul>
+
+<h3>🔌 Circuit Diagram</h3>
+
+<div class="diagram">
+
+Arduino UNO
+│
+├── HC-05 Bluetooth
+│
+├── Ultrasonic Sensor
+│   ├── TRIG → A0
+│   └── ECHO → A1
+│
+├── IR Sensor 1 → A2
+│
+├── IR Sensor 2 → A3
+│
+├── LDR → A5
+│
+├── LED → D9
+│
+└── Motor Driver
+    ├── Motor 1
+    ├── Motor 2
+    ├── Motor 3
+    └── Motor 4
+
+</div>
+
+<h3>💻 Example Coding</h3>
+
+<div class="code">
+if (obstacleDetected) {
+    Serial.println("STOP");
+}
+
+if (wasteDetected) {
+    Serial.println("Collect waste");
+}
+
+if (roadProblemDetected) {
+    Serial.println("Report road problem");
+}
+
+if (streetlightProblem) {
+    Serial.println("Check streetlight");
+}
+</div>
+
+<h3>⚙️ How It Works</h3>
+
+<p>
+The sensors collect information from the surroundings.
+The Arduino processes the sensor readings and sends
+the appropriate message. The car remains under manual
+Bluetooth control.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ================= SMART DUSTBIN POPUP ================= -->
+
+<div id="dustbin" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeProject('dustbin')">&times;</span>
+
+<h2>🗑️ Smart Dustbin</h2>
+
+<h3>📌 About the Project</h3>
+
+<p>
+The Smart Dustbin is designed to open automatically
+when a person brings waste near it.
+</p>
+
+<h3>⭐ Advantages</h3>
+
+<ul>
+<li>Hands-free waste disposal</li>
+<li>Improves hygiene</li>
+<li>Easy to use</li>
+<li>Can reduce unnecessary touching</li>
+<li>Can be upgraded with waste-level detection</li>
+</ul>
+
+<h3>🔧 Components</h3>
+
+<ul>
+<li>Arduino UNO</li>
+<li>Ultrasonic sensor</li>
+<li>Servo motor</li>
+<li>Dustbin body</li>
+<li>Jumper wires</li>
+<li>Power supply</li>
+</ul>
+
+<h3>🔌 Circuit Diagram</h3>
+
+<div class="diagram">
+
+        Ultrasonic
+       ┌───────────┐
+       │ TRIG ECHO │
+       └─────┬─────┘
+             │
+             ▼
+        Arduino UNO
+             │
+             │ Servo Signal
+             ▼
+          Servo
+             │
+             ▼
+       Dustbin Lid
+
+</div>
+
+<h3>💻 Example Coding</h3>
+
+<div class="code">
+if (distance &lt; 15) {
+
+    servo.write(90);
+
+}
+else {
+
+    servo.write(0);
+
+}
+</div>
+
+<h3>⚙️ How It Works</h3>
+
+<p>
+The ultrasonic sensor measures the distance of an
+object near the dustbin. When a person brings waste
+close to the sensor, the Arduino moves the servo motor
+and opens the lid.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ================= CLEANING ROBOT POPUP ================= -->
+
+<div id="cleaning" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeProject('cleaning')">&times;</span>
+
+<h2>🧹 Cleaning Robot</h2>
+
+<h3>📌 About the Project</h3>
+
+<p>
+The Cleaning Robot is a home helper robot concept
+designed to assist with floor cleaning, waste collection
+and other household cleaning tasks.
+</p>
+
+<h3>⭐ Advantages</h3>
+
+<ul>
+<li>Helps with household cleaning</li>
+<li>Can detect obstacles</li>
+<li>Can collect waste</li>
+<li>Can spray water</li>
+<li>Can be controlled using Bluetooth</li>
+<li>Can be upgraded with automatic cleaning modes</li>
+</ul>
+
+<h3>🔧 Components</h3>
+
+<ul>
+<li>Arduino UNO</li>
+<li>L293D motor driver</li>
+<li>HC-05 Bluetooth</li>
+<li>Ultrasonic sensor</li>
+<li>2 IR sensors</li>
+<li>Servo motor</li>
+<li>Water pump</li>
+<li>Relay module</li>
+<li>4 DC motors</li>
+</ul>
+
+<h3>🔌 Circuit Diagram</h3>
+
+<div class="diagram">
+
+              Arduino UNO
+             /     |      \
+            /      |       \
+           ▼       ▼        ▼
+       HC-05    Ultrasonic   IR Sensors
+          │         │
+          │         │
+          ▼         ▼
+       Bluetooth  Obstacle
+        Control    Check
+           
+           Arduino
+              │
+              ▼
+        L293D Motor Driver
+          /    |    \
+         ▼     ▼     ▼
+      Motor  Motor  Motor
+      Motor  Motor  Motor
+
+              Arduino
+                 │
+                 ▼
+             Relay Module
+                 │
+                 ▼
+             Water Pump
+
+              Arduino
+                 │
+                 ▼
+              Servo
+                 │
+                 ▼
+            Cleaning Arm
+
+</div>
+
+<h3>💻 Example Coding</h3>
+
+<div class="code">
+if (obstacleDetected) {
+
+    stopRobot();
+
+}
+
+if (cleaningMode) {
+
+    startCleaning();
+
+}
+
+if (pumpRequired) {
+
+    digitalWrite(RELAY_PIN, HIGH);
+
+}
+</div>
+
+<h3>⚙️ How It Works</h3>
+
+<p>
+The ultrasonic sensor checks for obstacles while the
+IR sensors can help detect objects or waste.
+The Arduino controls the motors through the L293D.
+The relay controls the water pump and the servo can
+operate a cleaning mechanism.
+</p>
+
+</div>
+
+</div>
 
 
 <!-- FOOTER -->
@@ -499,33 +790,25 @@ real-world problems and make everyday life easier.
 
 <script>
 
-function showProject(project) {
+function openProject(project) {
 
-    if (project === "TN Smart Car") {
+    document.getElementById(project).style.display = "block";
 
-        alert(
-        "TN Smart Car\n\n" +
-        "Detects waste, road problems, obstacles and streetlight problems.\n\n" +
-        "Control: Bluetooth manual control."
-        );
+}
 
-    }
+function closeProject(project) {
 
-    else if (project === "Smart Dustbin") {
+    document.getElementById(project).style.display = "none";
 
-        alert(
-        "Smart Dustbin\n\n" +
-        "An automatic waste disposal system designed for easier and hygienic waste management."
-        );
+}
 
-    }
+/* Close popup when clicking outside */
 
-    else if (project === "Cleaning Robot") {
+window.onclick = function(event) {
 
-        alert(
-        "Cleaning Robot\n\n" +
-        "A home helper robot designed for cleaning, waste collection, obstacle detection and water spraying."
-        );
+    if (event.target.classList.contains("modal")) {
+
+        event.target.style.display = "none";
 
     }
 
