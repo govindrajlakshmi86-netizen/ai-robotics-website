@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI & Robotics World</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #070b18;
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(7, 11, 24, 0.95);
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* Home */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+            background:
+                radial-gradient(circle at 50% 30%, #172554, #070b18 60%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .robot {
+            font-size: 90px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 28px;
+            background: #38bdf8;
+            color: #06101f;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+        }
+
+        /* Sections */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #38bdf8;
+        }
+
+        /* Project Cards */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #111827;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #1e293b;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #38bdf8;
+        }
+
+        .card-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .card button {
+            margin-top: 20px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 20px;
+            background: #1e40af;
+            color: white;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #2563eb;
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill {
+            padding: 20px 30px;
+            background: #111827;
+            border: 1px solid #1e293b;
+            border-radius: 15px;
+            font-size: 18px;
+        }
+
+        /* About */
+        .about {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #030712;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .robot {
+                font-size: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <div class="logo">
+            AI<span>ROBOTS</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Home -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="robot">🤖</div>
+
+            <h1>
+                Welcome to my
+                <span>AI & Robotics</span>
+                World
+            </h1>
+
+            <p>
+                Exploring Artificial Intelligence, Robotics,
+                Cloud Computing and the future of smart technology.
+            </p>
+
+            <a href="#projects" class="button">
+                Explore My Projects 🚀
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Projects -->
+    <section id="projects">
+
+        <h2 class="section-title">
+            My <span>Projects</span>
+        </h2>
+
+        <div class="projects">
+
+            <div class="card">
+
+                <div class="card-icon">🤖</div>
+
+                <h3>TN Smart Robot</h3>
+
+                <p>
+                    A smart robot concept designed to detect
+                    waste, road problems, obstacles and
+                    streetlight problems.
+                </p>
+
+                <button onclick="showProject('TN Smart Robot')">
+                    View Project
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🧹</div>
+
+                <h3>Cleaning Robot</h3>
+
+                <p>
+                    A home-helper robot designed to assist
+                    with cleaning tasks and detect objects
+                    around the room.
+                </p>
+
+                <button onclick="showProject('Cleaning Robot')">
+                    View Project
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🗑️</div>
+
+                <h3>Smart Dustbin</h3>
+
+                <p>
+                    A smart waste-management idea that can
+                    detect waste and make everyday cleaning
+                    easier.
+                </p>
+
+                <button onclick="showProject('Smart Dustbin')">
+                    View Project
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">☁️</div>
+
+                <h3>Cloud Projects</h3>
+
+                <p>
+                    Learning how servers, cloud computing,
+                    applications and online services work.
+                </p>
+
+                <button onclick="showProject('Cloud Projects')">
+                    View Project
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills">
+
+        <h2 class="section-title">
+            What I'm <span>Learning</span>
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill">🤖 Robotics</div>
+            <div class="skill">🧠 Artificial Intelligence</div>
+            <div class="skill">☁️ Cloud Computing</div>
+            <div class="skill">💻 Programming</div>
+            <div class="skill">🌐 Web Development</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <div class="about">
+
+            <p>
+                I am learning technology and building projects
+                using electronics, programming and robotics.
+                My main interests are Artificial Intelligence,
+                Robotics and Cloud Computing.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>© 2026 AI & Robotics World</p>
+
+        <p>
+            Built with HTML, CSS & JavaScript 🤖
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function showProject(projectName) {
+
+            alert(
+                "🚀 " + projectName +
+                "\n\nMore information about this project will be added soon!"
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
