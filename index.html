@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RoboNexus | AI & Robotics</title>
+<title>RoboNexus | Santhosh Projects</title>
 
 <style>
 
@@ -20,6 +23,8 @@ body {
     color: white;
     line-height: 1.6;
 }
+
+/* NAVIGATION */
 
 nav {
     background: #111831;
@@ -47,6 +52,9 @@ nav a:hover {
     color: #00e5ff;
 }
 
+
+/* HERO */
+
 .hero {
     text-align: center;
     padding: 90px 20px;
@@ -55,6 +63,23 @@ nav a:hover {
 
 .robot {
     font-size: 80px;
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
 }
 
 .hero h1 {
@@ -82,6 +107,9 @@ nav a:hover {
     font-weight: bold;
 }
 
+
+/* SECTIONS */
+
 section {
     padding: 70px 8%;
 }
@@ -91,6 +119,9 @@ section h2 {
     font-size: 35px;
     margin-bottom: 40px;
 }
+
+
+/* PROJECTS */
 
 .projects {
     display: grid;
@@ -103,12 +134,12 @@ section h2 {
     padding: 25px;
     border-radius: 18px;
     border: 1px solid #283457;
+    transition: 0.3s;
 }
 
 .card:hover {
+    transform: translateY(-7px);
     border-color: #00e5ff;
-    transform: translateY(-5px);
-    transition: 0.3s;
 }
 
 .card-icon {
@@ -144,6 +175,7 @@ section h2 {
     font-size: 13px;
 }
 
+
 /* SKILLS */
 
 .skills {
@@ -157,7 +189,9 @@ section h2 {
     padding: 20px;
     text-align: center;
     border-radius: 12px;
+    border: 1px solid #283457;
 }
+
 
 /* ABOUT */
 
@@ -168,6 +202,7 @@ section h2 {
     color: #c8d1e8;
 }
 
+
 /* CONTACT */
 
 .contact {
@@ -177,7 +212,15 @@ section h2 {
 
 .contact p {
     color: #c8d1e8;
+    margin: 10px;
 }
+
+.phone {
+    font-size: 25px;
+    color: #00e5ff !important;
+    font-weight: bold;
+}
+
 
 /* POPUP */
 
@@ -205,7 +248,7 @@ section h2 {
 
 .close {
     float: right;
-    font-size: 30px;
+    font-size: 32px;
     cursor: pointer;
     color: #00e5ff;
 }
@@ -248,8 +291,10 @@ section h2 {
     text-align: center;
     font-family: monospace;
     white-space: pre-wrap;
-    color: #ffffff;
 }
+
+
+/* FOOTER */
 
 footer {
     text-align: center;
@@ -257,6 +302,9 @@ footer {
     background: #070b16;
     color: #8c98b5;
 }
+
+
+/* MOBILE */
 
 @media(max-width: 600px) {
 
@@ -277,25 +325,37 @@ footer {
         width: 95%;
         padding: 20px;
     }
+
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- NAVIGATION -->
 
 <nav>
 
-<div class="logo">🤖 RoboNexus</div>
+<div class="logo">
+🤖 RoboNexus
+</div>
 
 <div>
+
 <a href="#home">Home</a>
+
 <a href="#projects">Projects</a>
+
 <a href="#skills">Skills</a>
+
 <a href="#about">About</a>
+
 <a href="#contact">Contact</a>
+
 </div>
 
 </nav>
@@ -305,13 +365,18 @@ footer {
 
 <section class="hero" id="home">
 
-<div class="robot">🤖</div>
+<div class="robot">
+🤖
+</div>
 
-<h1>Building the <span>Future</span></h1>
+<h1>
+Building the <span>Future</span>
+</h1>
 
 <p>
-Welcome to RoboNexus — my personal AI, Robotics,
-Cloud Computing and Web Development project website.
+Welcome to Santhosh Projects — a personal technology
+website focused on AI, Robotics, Cloud Computing,
+Arduino and Web Development.
 </p>
 
 <button onclick="document.getElementById('projects').scrollIntoView()">
@@ -325,7 +390,9 @@ Explore Projects 🚀
 
 <section id="projects">
 
-<h2>🚀 My Projects</h2>
+<h2>
+🚀 My Projects
+</h2>
 
 <div class="projects">
 
@@ -334,16 +401,22 @@ Explore Projects 🚀
 
 <div class="card">
 
-<div class="card-icon">🚗</div>
+<div class="card-icon">
+🚗
+</div>
 
-<h3>TN Smart Car</h3>
+<h3>
+TN Smart Car
+</h3>
 
 <p>
 A smart robotic car designed to identify waste,
 road problems, obstacles and streetlight problems.
 </p>
 
-<div class="status">Building 🚧</div>
+<div class="status">
+Building 🚧
+</div>
 
 <br>
 
@@ -358,16 +431,22 @@ View Project
 
 <div class="card">
 
-<div class="card-icon">🗑️</div>
+<div class="card-icon">
+🗑️
+</div>
 
-<h3>Smart Dustbin</h3>
+<h3>
+Smart Dustbin
+</h3>
 
 <p>
-An automatic dustbin concept designed to make
-waste disposal easier and more hygienic.
+An automatic dustbin designed to make waste disposal
+easier and more hygienic.
 </p>
 
-<div class="status">Planning 📋</div>
+<div class="status">
+Planning 📋
+</div>
 
 <br>
 
@@ -382,16 +461,22 @@ View Project
 
 <div class="card">
 
-<div class="card-icon">🧹</div>
+<div class="card-icon">
+🧹
+</div>
 
-<h3>Cleaning Robot</h3>
+<h3>
+Cleaning Robot
+</h3>
 
 <p>
-A home helper robot designed to assist with
-cleaning, waste collection and obstacle detection.
+A home helper robot designed to assist with cleaning,
+waste collection and obstacle detection.
 </p>
 
-<div class="status">Planning 📋</div>
+<div class="status">
+Planning 📋
+</div>
 
 <br>
 
@@ -400,6 +485,7 @@ View Project
 </button>
 
 </div>
+
 
 </div>
 
@@ -410,16 +496,35 @@ View Project
 
 <section id="skills">
 
-<h2>💻 Skills</h2>
+<h2>
+💻 Skills
+</h2>
 
 <div class="skills">
 
-<div class="skill">🤖 Robotics</div>
-<div class="skill">🧠 Artificial Intelligence</div>
-<div class="skill">☁️ Cloud Computing</div>
-<div class="skill">💻 Programming</div>
-<div class="skill">🌐 Web Development</div>
-<div class="skill">🔧 Arduino</div>
+<div class="skill">
+🤖 Robotics
+</div>
+
+<div class="skill">
+🧠 Artificial Intelligence
+</div>
+
+<div class="skill">
+☁️ Cloud Computing
+</div>
+
+<div class="skill">
+💻 Programming
+</div>
+
+<div class="skill">
+🌐 Web Development
+</div>
+
+<div class="skill">
+🔧 Arduino
+</div>
 
 </div>
 
@@ -430,14 +535,17 @@ View Project
 
 <section id="about">
 
-<h2>👨‍💻 About RoboNexus</h2>
+<h2>
+👨‍💻 About Santhosh Projects
+</h2>
 
 <div class="about">
 
 <p>
-RoboNexus is my personal technology project website.
-I am learning Artificial Intelligence, Robotics,
-Cloud Computing, Arduino and Web Development.
+Santhosh Projects is a personal technology project
+website where I share my experiments and projects
+in Artificial Intelligence, Robotics, Arduino,
+Cloud Computing and Web Development.
 </p>
 
 <br>
@@ -456,58 +564,102 @@ real-world problems and make everyday life easier.
 
 <section id="contact" class="contact">
 
-<h2>📩 Contact</h2>
+<h2>
+📩 Contact
+</h2>
 
-<p>More projects will be added soon 🚀</p>
+<p>
+Have a project idea or want to know more?
+</p>
+
+<p class="phone">
+📞 8300747019
+</p>
+
+<p>
+More projects will be added soon 🚀
+</p>
 
 </section>
 
 
-<!-- ================= TN SMART CAR POPUP ================= -->
+<!-- TN SMART CAR POPUP -->
 
 <div id="tn" class="modal">
 
 <div class="modal-content">
 
-<span class="close" onclick="closeProject('tn')">&times;</span>
+<span class="close" onclick="closeProject('tn')">
+&times;
+</span>
 
-<h2>🚗 TN Smart Car</h2>
+<h2>
+🚗 TN Smart Car
+</h2>
 
-<h3>📌 About the Project</h3>
+
+<h3>
+📌 About the Project
+</h3>
 
 <p>
 TN Smart Car is a robotics project designed to detect
-different problems such as waste, road problems,
-obstacles and streetlight problems.
+waste, road problems, obstacles and streetlight problems.
 The current design uses Bluetooth for manual control.
 </p>
 
-<h3>⭐ Advantages</h3>
+
+<h3>
+⭐ Advantages
+</h3>
 
 <ul>
+
 <li>Helps identify waste</li>
+
 <li>Can identify road problems</li>
+
 <li>Can detect obstacles</li>
+
 <li>Can check streetlight conditions</li>
-<li>Can be manually controlled using Bluetooth</li>
-<li>Can be developed further with AI and cloud technology</li>
+
+<li>Bluetooth manual control</li>
+
+<li>Can be upgraded with AI and cloud technology</li>
+
 </ul>
 
-<h3>🔧 Components</h3>
+
+<h3>
+🔧 Components
+</h3>
 
 <ul>
+
 <li>Arduino UNO</li>
+
 <li>HC-05 Bluetooth module</li>
+
 <li>Ultrasonic sensor</li>
+
 <li>2 IR sensors</li>
+
 <li>LDR</li>
+
 <li>LED</li>
-<li>AFMotor / motor driver</li>
+
+<li>Motor driver</li>
+
 <li>4 DC motors</li>
-<li>NEO-6M GPS (optional)</li>
+
+<li>NEO-6M GPS - optional</li>
+
 </ul>
 
-<h3>🔌 Circuit Diagram</h3>
+
+<h3>
+🔌 Circuit Diagram
+</h3>
 
 <div class="diagram">
 
@@ -535,32 +687,48 @@ Arduino UNO
 
 </div>
 
-<h3>💻 Example Coding</h3>
+
+<h3>
+💻 Example Coding
+</h3>
 
 <div class="code">
+
 if (obstacleDetected) {
+
     Serial.println("STOP");
+
 }
 
 if (wasteDetected) {
+
     Serial.println("Collect waste");
+
 }
 
 if (roadProblemDetected) {
+
     Serial.println("Report road problem");
+
 }
 
 if (streetlightProblem) {
+
     Serial.println("Check streetlight");
+
 }
+
 </div>
 
-<h3>⚙️ How It Works</h3>
+
+<h3>
+⚙️ How It Works
+</h3>
 
 <p>
 The sensors collect information from the surroundings.
-The Arduino processes the sensor readings and sends
-the appropriate message. The car remains under manual
+The Arduino processes the sensor readings and provides
+the appropriate response. The car remains under manual
 Bluetooth control.
 </p>
 
@@ -569,87 +737,124 @@ Bluetooth control.
 </div>
 
 
-<!-- ================= SMART DUSTBIN POPUP ================= -->
+<!-- SMART DUSTBIN POPUP -->
 
 <div id="dustbin" class="modal">
 
 <div class="modal-content">
 
-<span class="close" onclick="closeProject('dustbin')">&times;</span>
+<span class="close" onclick="closeProject('dustbin')">
+&times;
+</span>
 
-<h2>🗑️ Smart Dustbin</h2>
+<h2>
+🗑️ Smart Dustbin
+</h2>
 
-<h3>📌 About the Project</h3>
+
+<h3>
+📌 About the Project
+</h3>
 
 <p>
-The Smart Dustbin is designed to open automatically
-when a person brings waste near it.
+The Smart Dustbin is designed to open its lid
+automatically when waste or a hand comes near it.
 </p>
 
-<h3>⭐ Advantages</h3>
+
+<h3>
+⭐ Advantages
+</h3>
 
 <ul>
+
 <li>Hands-free waste disposal</li>
+
 <li>Improves hygiene</li>
+
 <li>Easy to use</li>
-<li>Can reduce unnecessary touching</li>
+
+<li>Reduces unnecessary touching</li>
+
 <li>Can be upgraded with waste-level detection</li>
+
 </ul>
 
-<h3>🔧 Components</h3>
+
+<h3>
+🔧 Components
+</h3>
 
 <ul>
+
 <li>Arduino UNO</li>
+
 <li>Ultrasonic sensor</li>
+
 <li>Servo motor</li>
+
 <li>Dustbin body</li>
+
 <li>Jumper wires</li>
+
 <li>Power supply</li>
+
 </ul>
 
-<h3>🔌 Circuit Diagram</h3>
+
+<h3>
+🔌 Circuit Diagram
+</h3>
 
 <div class="diagram">
 
-        Ultrasonic
-       ┌───────────┐
-       │ TRIG ECHO │
-       └─────┬─────┘
-             │
-             ▼
-        Arduino UNO
-             │
-             │ Servo Signal
-             ▼
-          Servo
-             │
-             ▼
-       Dustbin Lid
+        Ultrasonic Sensor
+          ┌───────────┐
+          │ TRIG ECHO │
+          └─────┬─────┘
+                │
+                ▼
+           Arduino UNO
+                │
+                │ Servo Signal
+                ▼
+              Servo
+                │
+                ▼
+           Dustbin Lid
 
 </div>
 
-<h3>💻 Example Coding</h3>
+
+<h3>
+💻 Example Coding
+</h3>
 
 <div class="code">
+
 if (distance &lt; 15) {
 
     servo.write(90);
 
 }
+
 else {
 
     servo.write(0);
 
 }
+
 </div>
 
-<h3>⚙️ How It Works</h3>
+
+<h3>
+⚙️ How It Works
+</h3>
 
 <p>
 The ultrasonic sensor measures the distance of an
-object near the dustbin. When a person brings waste
-close to the sensor, the Arduino moves the servo motor
-and opens the lid.
+object near the dustbin. When an object comes close,
+the Arduino moves the servo motor and opens the lid.
 </p>
 
 </div>
@@ -657,50 +862,83 @@ and opens the lid.
 </div>
 
 
-<!-- ================= CLEANING ROBOT POPUP ================= -->
+<!-- CLEANING ROBOT POPUP -->
 
 <div id="cleaning" class="modal">
 
 <div class="modal-content">
 
-<span class="close" onclick="closeProject('cleaning')">&times;</span>
+<span class="close" onclick="closeProject('cleaning')">
+&times;
+</span>
 
-<h2>🧹 Cleaning Robot</h2>
+<h2>
+🧹 Cleaning Robot
+</h2>
 
-<h3>📌 About the Project</h3>
+
+<h3>
+📌 About the Project
+</h3>
 
 <p>
-The Cleaning Robot is a home helper robot concept
-designed to assist with floor cleaning, waste collection
-and other household cleaning tasks.
+The Cleaning Robot is a home helper robot designed
+to assist with floor cleaning, waste collection,
+obstacle detection and water spraying.
 </p>
 
-<h3>⭐ Advantages</h3>
+
+<h3>
+⭐ Advantages
+</h3>
 
 <ul>
+
 <li>Helps with household cleaning</li>
+
 <li>Can detect obstacles</li>
+
 <li>Can collect waste</li>
+
 <li>Can spray water</li>
+
 <li>Can be controlled using Bluetooth</li>
+
 <li>Can be upgraded with automatic cleaning modes</li>
+
 </ul>
 
-<h3>🔧 Components</h3>
+
+<h3>
+🔧 Components
+</h3>
 
 <ul>
+
 <li>Arduino UNO</li>
+
 <li>L293D motor driver</li>
+
 <li>HC-05 Bluetooth</li>
+
 <li>Ultrasonic sensor</li>
+
 <li>2 IR sensors</li>
+
 <li>Servo motor</li>
+
 <li>Water pump</li>
+
 <li>Relay module</li>
+
 <li>4 DC motors</li>
+
 </ul>
 
-<h3>🔌 Circuit Diagram</h3>
+
+<h3>
+🔌 Circuit Diagram
+</h3>
 
 <div class="diagram">
 
@@ -714,7 +952,7 @@ and other household cleaning tasks.
           ▼         ▼
        Bluetooth  Obstacle
         Control    Check
-           
+
            Arduino
               │
               ▼
@@ -735,16 +973,20 @@ and other household cleaning tasks.
               Arduino
                  │
                  ▼
-              Servo
+               Servo
                  │
                  ▼
-            Cleaning Arm
+          Cleaning Mechanism
 
 </div>
 
-<h3>💻 Example Coding</h3>
+
+<h3>
+💻 Example Coding
+</h3>
 
 <div class="code">
+
 if (obstacleDetected) {
 
     stopRobot();
@@ -762,16 +1004,19 @@ if (pumpRequired) {
     digitalWrite(RELAY_PIN, HIGH);
 
 }
+
 </div>
 
-<h3>⚙️ How It Works</h3>
+
+<h3>
+⚙️ How It Works
+</h3>
 
 <p>
 The ultrasonic sensor checks for obstacles while the
-IR sensors can help detect objects or waste.
-The Arduino controls the motors through the L293D.
-The relay controls the water pump and the servo can
-operate a cleaning mechanism.
+IR sensors can detect objects or waste. The Arduino
+controls the motors through the L293D. The relay controls
+the water pump and the servo operates the cleaning mechanism.
 </p>
 
 </div>
@@ -783,10 +1028,14 @@ operate a cleaning mechanism.
 
 <footer>
 
-<p>© 2026 RoboNexus | AI • Robotics • Cloud</p>
+<p>
+© 2026 Santhosh Projects | AI • Robotics • Cloud
+</p>
 
 </footer>
 
+
+<!-- JAVASCRIPT -->
 
 <script>
 
@@ -802,7 +1051,8 @@ function closeProject(project) {
 
 }
 
-/* Close popup when clicking outside */
+
+/* CLOSE POPUP WHEN CLICKING OUTSIDE */
 
 window.onclick = function(event) {
 
@@ -812,9 +1062,20 @@ window.onclick = function(event) {
 
     }
 
-}
+};
+
+
+/* WELCOME MESSAGE */
+
+window.onload = function() {
+
+    alert("🚀 Welcome to Santhosh Projects!");
+
+};
 
 </script>
 
+
 </body>
+
 </html>
