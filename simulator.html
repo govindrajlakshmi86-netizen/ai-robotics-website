@@ -1,206 +1,289 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RoboLab Simulator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RoboLab - Make Project</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #10141c;
+    background: #080e18;
     color: white;
+    overflow: hidden;
 }
 
 header {
     height: 60px;
-    background: #171d29;
+    background: #101a2a;
     display: flex;
     align-items: center;
     padding: 0 20px;
+    gap: 25px;
 }
 
-header h2 {
-    margin: 0;
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+button {
+    border: 0;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+
+.home {
+    background: #344258;
+}
+
+.run {
+    background: #00a878;
+}
+
+.stop {
+    background: #d9534f;
 }
 
 .main {
-    display: flex;
     height: calc(100vh - 60px);
+    display: flex;
 }
 
-.components {
-    width: 220px;
-    background: #171d29;
+/* COMPONENT PANEL */
+
+.sidebar {
+    width: 230px;
+    background: #111c2d;
     padding: 15px;
-    box-sizing: border-box;
+    overflow-y: auto;
 }
 
-.components h3 {
+.sidebar h3 {
     margin-top: 0;
 }
 
 .component {
-    background: #242c3b;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
+    background: #1d2b40;
+    padding: 13px;
+    margin: 9px 0;
+    border-radius: 7px;
     cursor: grab;
 }
 
 .component:hover {
-    background: #303b4e;
+    background: #29415f;
 }
+
+/* WORKSPACE */
 
 .workspace {
     flex: 1;
     position: relative;
-    background-color: #0d1117;
+    overflow: hidden;
+
+    background-color: #0b111c;
 
     background-image:
-        linear-gradient(#202733 1px, transparent 1px),
-        linear-gradient(90deg, #202733 1px, transparent 1px);
+        linear-gradient(#182333 1px, transparent 1px),
+        linear-gradient(90deg, #182333 1px, transparent 1px);
 
     background-size: 25px 25px;
-
-    overflow: hidden;
 }
 
-.component-box {
+/* COMPONENT ON BOARD */
+
+.part {
     position: absolute;
-    width: 150px;
-    background: #252d3a;
-    border: 2px solid #566176;
-    border-radius: 10px;
-    padding: 10px;
+    width: 170px;
+    padding: 12px;
+    background: #202d40;
+    border: 2px solid #53657c;
+    border-radius: 8px;
     cursor: move;
     user-select: none;
 }
 
-.component-box h4 {
-    margin: 0 0 10px 0;
+.part-title {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .pin {
-    background: #111;
-    border: 2px solid #00d9ff;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.pin-dot {
     display: inline-block;
-    margin-right: 5px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #00c8ff;
+    margin-right: 6px;
+}
+
+/* RIGHT PANEL */
+
+.right {
+    width: 300px;
+    background: #111c2d;
+    padding: 15px;
 }
 
 .simulator {
-    width: 300px;
-    background: #171d29;
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-.car-area {
     height: 220px;
-    background: #0d1117;
-    border: 2px solid #3b4659;
-    border-radius: 10px;
+    background: #080d14;
+    border: 1px solid #33465f;
+    border-radius: 8px;
     position: relative;
     overflow: hidden;
 }
 
+.road {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #20252b;
+}
+
 .car {
     position: absolute;
-    left: 30px;
-    top: 90px;
     font-size: 45px;
+    left: 20px;
+    top: 85px;
 }
 
 .obstacle {
     position: absolute;
-    right: 35px;
-    top: 90px;
     font-size: 40px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border: 0;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.run {
-    background: #20c997;
-}
-
-.stop {
-    background: #ff5c5c;
+    right: 25px;
+    top: 88px;
 }
 
 .status {
-    margin-top: 15px;
-    padding: 10px;
-    background: #242c3b;
-    border-radius: 8px;
+    background: #1b293c;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 7px;
+    font-size: 14px;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h2>🤖 RoboLab Simulator</h2>
+
+    <div class="logo">🤖 RoboLab</div>
+
+    <button class="home"
+            onclick="location.href='index.html'">
+        Home
+    </button>
+
+    <button class="run" onclick="runSimulation()">
+        ▶ Run
+    </button>
+
+    <button class="stop" onclick="stopSimulation()">
+        ⏹ Stop
+    </button>
+
 </header>
+
 
 <div class="main">
 
     <!-- COMPONENTS -->
-    <div class="components">
+
+    <aside class="sidebar">
 
         <h3>Components</h3>
 
-        <div class="component" draggable="true"
+        <div class="component"
+             draggable="true"
              data-type="Arduino UNO">
             🔵 Arduino UNO
         </div>
 
-        <div class="component" draggable="true"
-             data-type="Ultrasonic">
-            📡 Ultrasonic
+        <div class="component"
+             draggable="true"
+             data-type="Breadboard">
+            🟩 Breadboard
         </div>
 
-        <div class="component" draggable="true"
+        <div class="component"
+             draggable="true"
+             data-type="HC-SR04">
+            📡 HC-SR04
+        </div>
+
+        <div class="component"
+             draggable="true"
              data-type="L293D">
             ⚙️ L293D
         </div>
 
-        <div class="component" draggable="true"
+        <div class="component"
+             draggable="true"
              data-type="DC Motor">
             🔵 DC Motor
         </div>
 
-        <div class="component" draggable="true"
+        <div class="component"
+             draggable="true"
+             data-type="Servo Motor">
+            🔄 Servo Motor
+        </div>
+
+        <div class="component"
+             draggable="true"
+             data-type="LED">
+            💡 LED
+        </div>
+
+        <div class="component"
+             draggable="true"
+             data-type="Resistor">
+            🟫 Resistor
+        </div>
+
+        <div class="component"
+             draggable="true"
              data-type="Battery">
             🔋 Battery
         </div>
 
-    </div>
+    </aside>
 
 
     <!-- WORKSPACE -->
-    <div class="workspace" id="workspace">
 
-    </div>
+    <main class="workspace" id="workspace">
+    </main>
 
 
     <!-- SIMULATOR -->
-    <div class="simulator">
+
+    <aside class="right">
 
         <h3>🚗 Simulation</h3>
 
-        <div class="car-area">
+        <div class="simulator">
+
+            <div class="road"></div>
 
             <div class="car" id="car">
                 🚗
@@ -212,43 +295,35 @@ button {
 
         </div>
 
-        <button class="run" onclick="runSimulation()">
-            ▶ RUN
-        </button>
-
-        <button class="stop" onclick="stopSimulation()">
-            ⏹ STOP
-        </button>
-
         <div class="status" id="status">
-            Status: Ready
+            Ready to run
         </div>
 
-    </div>
+    </aside>
 
 </div>
 
 
 <script>
 
-let workspace = document.getElementById("workspace");
-let components = document.querySelectorAll(".component");
+const workspace =
+    document.getElementById("workspace");
 
-let selectedComponent = null;
-let offsetX = 0;
-let offsetY = 0;
-
-let simulation = null;
+const components =
+    document.querySelectorAll(".component");
 
 
-/* DRAG COMPONENT FROM SIDEBAR */
+let simulation;
+
+
+/* DRAG FROM COMPONENT PANEL */
 
 components.forEach(component => {
 
-    component.addEventListener("dragstart", function(event) {
+    component.addEventListener("dragstart", event => {
 
         event.dataTransfer.setData(
-            "type",
+            "component",
             component.dataset.type
         );
 
@@ -257,82 +332,93 @@ components.forEach(component => {
 });
 
 
-/* DROP COMPONENT INTO WORKSPACE */
+/* ALLOW DROP */
 
-workspace.addEventListener("dragover", function(event) {
+workspace.addEventListener("dragover", event => {
 
     event.preventDefault();
 
 });
 
 
-workspace.addEventListener("drop", function(event) {
+/* CREATE COMPONENT */
+
+workspace.addEventListener("drop", event => {
 
     event.preventDefault();
 
-    let type = event.dataTransfer.getData("type");
+    const type =
+        event.dataTransfer.getData("component");
 
-    let box = document.createElement("div");
+    if (!type) return;
 
-    box.className = "component-box";
+    const part =
+        document.createElement("div");
 
-    box.innerHTML = `
-        <h4>${type}</h4>
+    part.className = "part";
 
-        <div>
-            <span class="pin"></span>
+    part.style.left =
+        (event.clientX - workspace.offsetLeft - 80) + "px";
+
+    part.style.top =
+        (event.clientY - workspace.offsetTop - 30) + "px";
+
+
+    part.innerHTML = `
+
+        <div class="part-title">
+            ${type}
+        </div>
+
+        <div class="pin">
+            <span class="pin-dot"></span>
             VCC
         </div>
 
-        <div>
-            <span class="pin"></span>
+        <div class="pin">
+            <span class="pin-dot"></span>
             GND
         </div>
 
-        <div>
-            <span class="pin"></span>
+        <div class="pin">
+            <span class="pin-dot"></span>
             SIGNAL
         </div>
+
     `;
 
-    box.style.left =
-        (event.clientX - workspace.offsetLeft - 70) + "px";
+    workspace.appendChild(part);
 
-    box.style.top =
-        (event.clientY - workspace.offsetTop - 30) + "px";
-
-    workspace.appendChild(box);
-
-    makeMovable(box);
+    makeMovable(part);
 
 });
 
 
 /* MOVE COMPONENT */
 
-function makeMovable(element) {
+function makeMovable(part) {
 
-    element.addEventListener("mousedown", function(event) {
+    part.addEventListener("mousedown", event => {
 
-        selectedComponent = element;
+        let startX =
+            event.clientX - part.offsetLeft;
 
-        offsetX =
-            event.clientX - element.offsetLeft;
+        let startY =
+            event.clientY - part.offsetTop;
 
-        offsetY =
-            event.clientY - element.offsetTop;
 
         function move(event) {
 
-            element.style.left =
-                (event.clientX - offsetX) + "px";
+            part.style.left =
+                (event.clientX - startX) + "px";
 
-            element.style.top =
-                (event.clientY - offsetY) + "px";
+            part.style.top =
+                (event.clientY - startY) + "px";
 
         }
 
-        function stopMove() {
+
+        function stop() {
 
             document.removeEventListener(
                 "mousemove",
@@ -341,10 +427,11 @@ function makeMovable(element) {
 
             document.removeEventListener(
                 "mouseup",
-                stopMove
+                stop
             );
 
         }
+
 
         document.addEventListener(
             "mousemove",
@@ -353,7 +440,7 @@ function makeMovable(element) {
 
         document.addEventListener(
             "mouseup",
-            stopMove
+            stop
         );
 
     });
@@ -361,37 +448,41 @@ function makeMovable(element) {
 }
 
 
-/* RUN SIMULATION */
+/* RUN */
 
 function runSimulation() {
 
-    let car =
+    const car =
         document.getElementById("car");
 
-    let status =
+    const status =
         document.getElementById("status");
 
+    let position = 20;
+
     status.innerHTML =
-        "Status: 🚗 Car moving...";
+        "🚗 Car is moving...";
 
-    let position = 30;
 
-    simulation = setInterval(function() {
+    simulation =
+        setInterval(() => {
 
-        position += 2;
+            position += 2;
 
-        car.style.left = position + "px";
+            car.style.left =
+                position + "px";
 
-        if (position >= 190) {
 
-            clearInterval(simulation);
+            if (position >= 190) {
 
-            status.innerHTML =
-                "Status: 📡 Obstacle detected!";
+                clearInterval(simulation);
 
-        }
+                status.innerHTML =
+                    "📡 Ultrasonic detected obstacle!";
 
-    }, 50);
+            }
+
+        }, 40);
 
 }
 
@@ -403,7 +494,7 @@ function stopSimulation() {
     clearInterval(simulation);
 
     document.getElementById("status").innerHTML =
-        "Status: ⏹ Simulation stopped";
+        "⏹ Simulation stopped";
 
 }
 
@@ -411,3 +502,4 @@ function stopSimulation() {
 
 </body>
 </html>
+```
