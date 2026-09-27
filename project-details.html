@@ -1,0 +1,383 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>RoboLab - Project Details</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #08111f;
+    color: white;
+}
+
+header {
+    padding: 20px 7%;
+    background: #0d192b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+    background: #132238;
+    border: 1px solid #263d5c;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.card-icon {
+    font-size: 50px;
+}
+
+.card p {
+    color: #aab8cc;
+    line-height: 1.6;
+}
+
+button {
+    background: #00bfff;
+    border: 0;
+    padding: 11px 18px;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+}
+
+.details {
+    margin-top: 40px;
+    background: #101d30;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.details h2 {
+    color: #00c8ff;
+}
+
+li {
+    margin: 10px 0;
+}
+
+.code {
+    background: #05090f;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    color: #d9e4f2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="logo">
+🤖 RoboLab
+</div>
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="make-project.html">
+Make Project
+</a>
+
+<a href="project-details.html">
+Project Details
+</a>
+
+</nav>
+
+</header>
+
+
+<div class="container">
+
+<h1>📚 Project Library</h1>
+
+<p>
+Learn how robotics and electronics projects are built.
+</p>
+
+
+<div class="project-list">
+
+
+<div class="card">
+
+<div class="card-icon">
+🚗
+</div>
+
+<h2>
+Obstacle Avoiding Car
+</h2>
+
+<p>
+A robot car that detects obstacles using
+an ultrasonic sensor and changes direction.
+</p>
+
+<button onclick="showObstacleCar()">
+View Details
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+🗑️
+</div>
+
+<h2>
+Smart Dustbin
+</h2>
+
+<p>
+A dustbin that can detect a person
+and automatically open its lid.
+</p>
+
+<button onclick="comingSoon()">
+View Details
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+🤖
+</div>
+
+<h2>
+Cleaning Robot
+</h2>
+
+<p>
+A robot concept designed to help
+with household cleaning tasks.
+</p>
+
+<button onclick="comingSoon()">
+View Details
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+💡
+</div>
+
+<h2>
+Automatic Street Light
+</h2>
+
+<p>
+A light system that responds to
+the surrounding light level.
+</p>
+
+<button onclick="comingSoon()">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+<div class="details" id="details">
+
+<h2>
+Select a project
+</h2>
+
+<p>
+Choose a project above to see its components,
+connections and working principle.
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+function showObstacleCar() {
+
+document.getElementById("details").innerHTML = `
+
+<h2>🚗 Obstacle Avoiding Car</h2>
+
+<p>
+The obstacle avoiding car uses an ultrasonic sensor
+to detect objects in front of the robot.
+The Arduino processes the distance and controls
+the motors through the motor driver.
+</p>
+
+
+<h2>🔧 Components</h2>
+
+<ul>
+
+<li>Arduino UNO</li>
+
+<li>HC-SR04 Ultrasonic Sensor</li>
+
+<li>L293D Motor Driver</li>
+
+<li>DC Motors</li>
+
+<li>Battery</li>
+
+<li>Robot Chassis</li>
+
+</ul>
+
+
+<h2>🔌 Main Connections</h2>
+
+<ul>
+
+<li>HC-SR04 VCC → Arduino 5V</li>
+
+<li>HC-SR04 GND → Arduino GND</li>
+
+<li>HC-SR04 TRIG → Arduino digital pin</li>
+
+<li>HC-SR04 ECHO → Arduino digital pin</li>
+
+<li>L293D → Arduino motor control pins</li>
+
+<li>Motors → L293D outputs</li>
+
+</ul>
+
+
+<h2>🧠 How It Works</h2>
+
+<p>
+
+The ultrasonic sensor sends a sound pulse and measures
+the returning signal. The Arduino calculates the
+distance. If an obstacle is detected, the motor
+commands are changed so the robot can avoid it.
+
+</p>
+
+
+<h2>💻 Example Arduino Logic</h2>
+
+<div class="code">
+
+if (distance < 20) {
+
+&nbsp;&nbsp;stopMotors();<br>
+
+&nbsp;&nbsp;turnRight();<br>
+
+}
+
+else {
+
+&nbsp;&nbsp;moveForward();<br>
+
+}
+
+</div>
+
+
+<br>
+
+<button onclick="location.href='make-project.html'">
+
+🔧 Try This Project
+
+</button>
+
+`;
+
+}
+
+
+function comingSoon() {
+
+document.getElementById("details").innerHTML = `
+
+<h2>🚧 Project Coming Soon</h2>
+
+<p>
+
+This project will be added to the RoboLab simulator
+in a future version.
+
+</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+
+</html>
+```
