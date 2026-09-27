@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RoboLab Simulator</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #10141c;
+    color: white;
+}
+
+header {
+    height: 60px;
+    background: #171d29;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header h2 {
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.components {
+    width: 220px;
+    background: #171d29;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.components h3 {
+    margin-top: 0;
+}
+
+.component {
+    background: #242c3b;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: grab;
+}
+
+.component:hover {
+    background: #303b4e;
+}
+
+.workspace {
+    flex: 1;
+    position: relative;
+    background-color: #0d1117;
+
+    background-image:
+        linear-gradient(#202733 1px, transparent 1px),
+        linear-gradient(90deg, #202733 1px, transparent 1px);
+
+    background-size: 25px 25px;
+
+    overflow: hidden;
+}
+
+.component-box {
+    position: absolute;
+    width: 150px;
+    background: #252d3a;
+    border: 2px solid #566176;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: move;
+    user-select: none;
+}
+
+.component-box h4 {
+    margin: 0 0 10px 0;
+}
+
+.pin {
+    background: #111;
+    border: 2px solid #00d9ff;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.simulator {
+    width: 300px;
+    background: #171d29;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.car-area {
+    height: 220px;
+    background: #0d1117;
+    border: 2px solid #3b4659;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.car {
+    position: absolute;
+    left: 30px;
+    top: 90px;
+    font-size: 45px;
+}
+
+.obstacle {
+    position: absolute;
+    right: 35px;
+    top: 90px;
+    font-size: 40px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.run {
+    background: #20c997;
+}
+
+.stop {
+    background: #ff5c5c;
+}
+
+.status {
+    margin-top: 15px;
+    padding: 10px;
+    background: #242c3b;
+    border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>🤖 RoboLab Simulator</h2>
+</header>
+
+<div class="main">
+
+    <!-- COMPONENTS -->
+    <div class="components">
+
+        <h3>Components</h3>
+
+        <div class="component" draggable="true"
+             data-type="Arduino UNO">
+            🔵 Arduino UNO
+        </div>
+
+        <div class="component" draggable="true"
+             data-type="Ultrasonic">
+            📡 Ultrasonic
+        </div>
+
+        <div class="component" draggable="true"
+             data-type="L293D">
+            ⚙️ L293D
+        </div>
+
+        <div class="component" draggable="true"
+             data-type="DC Motor">
+            🔵 DC Motor
+        </div>
+
+        <div class="component" draggable="true"
+             data-type="Battery">
+            🔋 Battery
+        </div>
+
+    </div>
+
+
+    <!-- WORKSPACE -->
+    <div class="workspace" id="workspace">
+
+    </div>
+
+
+    <!-- SIMULATOR -->
+    <div class="simulator">
+
+        <h3>🚗 Simulation</h3>
+
+        <div class="car-area">
+
+            <div class="car" id="car">
+                🚗
+            </div>
+
+            <div class="obstacle">
+                🧱
+            </div>
+
+        </div>
+
+        <button class="run" onclick="runSimulation()">
+            ▶ RUN
+        </button>
+
+        <button class="stop" onclick="stopSimulation()">
+            ⏹ STOP
+        </button>
+
+        <div class="status" id="status">
+            Status: Ready
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let workspace = document.getElementById("workspace");
+let components = document.querySelectorAll(".component");
+
+let selectedComponent = null;
+let offsetX = 0;
+let offsetY = 0;
+
+let simulation = null;
+
+
+/* DRAG COMPONENT FROM SIDEBAR */
+
+components.forEach(component => {
+
+    component.addEventListener("dragstart", function(event) {
+
+        event.dataTransfer.setData(
+            "type",
+            component.dataset.type
+        );
+
+    });
+
+});
+
+
+/* DROP COMPONENT INTO WORKSPACE */
+
+workspace.addEventListener("dragover", function(event) {
+
+    event.preventDefault();
+
+});
+
+
+workspace.addEventListener("drop", function(event) {
+
+    event.preventDefault();
+
+    let type = event.dataTransfer.getData("type");
+
+    let box = document.createElement("div");
+
+    box.className = "component-box";
+
+    box.innerHTML = `
+        <h4>${type}</h4>
+
+        <div>
+            <span class="pin"></span>
+            VCC
+        </div>
+
+        <div>
+            <span class="pin"></span>
+            GND
+        </div>
+
+        <div>
+            <span class="pin"></span>
+            SIGNAL
+        </div>
+    `;
+
+    box.style.left =
+        (event.clientX - workspace.offsetLeft - 70) + "px";
+
+    box.style.top =
+        (event.clientY - workspace.offsetTop - 30) + "px";
+
+    workspace.appendChild(box);
+
+    makeMovable(box);
+
+});
+
+
+/* MOVE COMPONENT */
+
+function makeMovable(element) {
+
+    element.addEventListener("mousedown", function(event) {
+
+        selectedComponent = element;
+
+        offsetX =
+            event.clientX - element.offsetLeft;
+
+        offsetY =
+            event.clientY - element.offsetTop;
+
+        function move(event) {
+
+            element.style.left =
+                (event.clientX - offsetX) + "px";
+
+            element.style.top =
+                (event.clientY - offsetY) + "px";
+
+        }
+
+        function stopMove() {
+
+            document.removeEventListener(
+                "mousemove",
+                move
+            );
+
+            document.removeEventListener(
+                "mouseup",
+                stopMove
+            );
+
+        }
+
+        document.addEventListener(
+            "mousemove",
+            move
+        );
+
+        document.addEventListener(
+            "mouseup",
+            stopMove
+        );
+
+    });
+
+}
+
+
+/* RUN SIMULATION */
+
+function runSimulation() {
+
+    let car =
+        document.getElementById("car");
+
+    let status =
+        document.getElementById("status");
+
+    status.innerHTML =
+        "Status: 🚗 Car moving...";
+
+    let position = 30;
+
+    simulation = setInterval(function() {
+
+        position += 2;
+
+        car.style.left = position + "px";
+
+        if (position >= 190) {
+
+            clearInterval(simulation);
+
+            status.innerHTML =
+                "Status: 📡 Obstacle detected!";
+
+        }
+
+    }, 50);
+
+}
+
+
+/* STOP */
+
+function stopSimulation() {
+
+    clearInterval(simulation);
+
+    document.getElementById("status").innerHTML =
+        "Status: ⏹ Simulation stopped";
+
+}
+
+</script>
+
+</body>
+</html>
